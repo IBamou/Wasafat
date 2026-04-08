@@ -46,3 +46,7 @@ logs/
 
 # XAMPP specific
 C:\xampp\htdocs\
+
+
+composer.json
+composer.lock
