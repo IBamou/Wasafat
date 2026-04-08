@@ -6,7 +6,14 @@
     <span>Dashboard</span>
 </div>
 
-<div class="page-content">
+<div class="page-content"> 
+
+<?php if (!empty($_SESSION['success'])): ?>
+    <div class="alert alert-success animate-in">
+        <i class="fas fa-check-circle"></i>
+        <?= htmlspecialchars($_SESSION['success']); unset($_SESSION['success']); ?>
+    </div>
+<?php endif; ?>
 
     <!-- Welcome Section -->
     <div class="dashboard-welcome animate-in">

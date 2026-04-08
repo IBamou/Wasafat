@@ -786,7 +786,7 @@
                         name="name"
                         required
                         placeholder="e.g., Lamb Tagine with Prunes"
-                        value="<?= htmlspecialchars($_POST['name'] ?? '') ?>"
+                        value="<?= htmlspecialchars($post['name'] ?? '') ?>"
                         maxlength="150"
                         autocomplete="off"
                     >
@@ -802,7 +802,7 @@
                             <?php foreach ($categories as $cat): ?>
                                 <option
                                     value="<?= $cat['id'] ?>"
-                                    <?= (($_POST['category_id'] ?? '') == $cat['id']) ? 'selected' : '' ?>
+                                    <?= (($post['category_id'] ?? '') == $cat['id']) ? 'selected' : '' ?>
                                 >
                                     <?= htmlspecialchars($cat['name']) ?>
                                 </option>
@@ -817,21 +817,21 @@
                     <div class="difficulty-options">
                         <div class="difficulty-option">
                             <input type="radio" id="diff_easy" name="difficulty" value="easy"
-                                <?= (($_POST['difficulty'] ?? '') === 'easy') ? 'checked' : '' ?>>
+                                <?= (($post['difficulty'] ?? '') === 'easy') ? 'checked' : '' ?>>
                             <label for="diff_easy">
                                 <span class="diff-emoji">🟢</span> Easy
                             </label>
                         </div>
                         <div class="difficulty-option">
                             <input type="radio" id="diff_medium" name="difficulty" value="medium"
-                                <?= (($_POST['difficulty'] ?? 'medium') === 'medium') ? 'checked' : '' ?>>
+                                <?= (($post['difficulty'] ?? 'medium') === 'medium') ? 'checked' : '' ?>>
                             <label for="diff_medium">
                                 <span class="diff-emoji">🟡</span> Medium
                             </label>
                         </div>
                         <div class="difficulty-option">
                             <input type="radio" id="diff_hard" name="difficulty" value="hard"
-                                <?= (($_POST['difficulty'] ?? '') === 'hard') ? 'checked' : '' ?>>
+                                <?= (($post['difficulty'] ?? '') === 'hard') ? 'checked' : '' ?>>
                             <label for="diff_hard">
                                 <span class="diff-emoji">🔴</span> Hard
                             </label>
@@ -850,7 +850,7 @@
                             min="0"
                             max="9999"
                             placeholder="30"
-                            value="<?= htmlspecialchars($_POST['preparation_time'] ?? '') ?>"
+                            value="<?= htmlspecialchars($post['preparation_time'] ?? '') ?>"
                         >
                         <span class="input-suffix">min</span>
                     </div>
@@ -867,7 +867,7 @@
                             min="0"
                             max="9999"
                             placeholder="45"
-                            value="<?= htmlspecialchars($_POST['cooking_time'] ?? '') ?>"
+                            value="<?= htmlspecialchars($post['cooking_time'] ?? '') ?>"
                         >
                         <span class="input-suffix">min</span>
                     </div>
@@ -883,7 +883,7 @@
                     rows="3"
                     placeholder="A brief description of your recipe — its story, flavors, and what makes it special..."
                     maxlength="500"
-                ><?= htmlspecialchars($_POST['description'] ?? '') ?></textarea>
+                ><?= htmlspecialchars($post['description'] ?? '') ?></textarea>
                 <span class="char-counter" id="descCounter">0 / 500</span>
             </div>
 
@@ -913,7 +913,7 @@
 
             <div class="ingredient-items" id="ingredientsList">
                 <?php
-                $ingredients = $_POST['ingredients'] ?? ['', '', ''];
+                $ingredients = $post['ingredients'] ?? ['', '', ''];
                 if (empty($ingredients)) $ingredients = ['', '', ''];
                 $placeholders = [
                     'e.g., 500g semolina',
@@ -958,7 +958,7 @@
 
             <div class="step-items" id="instructionsList">
                 <?php
-                $instructions = $_POST['instructions'] ?? ['', ''];
+                $instructions = $post['instructions'] ?? ['', ''];
                 if (empty($instructions)) $instructions = ['', ''];
                 $stepPlaceholders = [
                     'Describe the first step of your culinary secret...',

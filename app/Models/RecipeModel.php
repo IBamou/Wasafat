@@ -120,6 +120,19 @@ class RecipeModel extends Database {
             return [];
         }
     }
+
+    public function getRecentByUser(int $userId, int $days = 7): int {
+        try {
+            $sql = 'SELECT COUNT(*) as count FROM recipes WHERE user_id = :user_id AND created_at >= DATE_SUB(NOW(), INTERVAL :days DAY)';
+            $stmt = $this->db->prepare($sql);
+            $stmt->bindParam(':user_id', $userId, PDO::PARAM_INT);
+            $stmt->bindParam(':days', $days, PDO::PARAM_INT);
+            $stmt->execute();
+            return (int) $stmt->fetch(PDO::FETCH_ASSOC)['count'];
+        } catch (PDOException $e) {
+            return 0;
+        }
+    }
 }
 
 

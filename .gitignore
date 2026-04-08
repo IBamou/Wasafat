@@ -1,6 +1,10 @@
 # Dependencies
 /vendor/
 
+# Composer
+composer.json
+composer.lock
+
 # Environment files
 .env
 .env.local

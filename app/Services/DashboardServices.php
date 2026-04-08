@@ -17,10 +17,12 @@ class DashboardServices {
         $userId = $_SESSION['user']['id'];
         $recipeCount = $this->recipeModel->countByUser($userId);
         $categoryCount = $this->categoryModel->countByUser($userId);
+        $recentCount = $this->recipeModel->getRecentByUser($userId, 7);
         
         $data = [
             'recipeCount' => $recipeCount,
-            'categoryCount' => $categoryCount
+            'categoryCount' => $categoryCount,
+            'recentCount' => $recentCount
         ];
         return ['success' => true, 'data' => $data];
     }
