@@ -73,7 +73,6 @@ Wasafat/
 │   └── js/             # JavaScript files
 ├── router/              # Main router
 ├── query.sql           # Database schema
-├── composer.json       # PHP dependencies
 └── README.md          # This file
 ```
 
